@@ -24,12 +24,18 @@ public class Image {
     @Column(name = "title")
     private String title;
 
+
+    // Setting a transient annotation for access denied exception
+
+    @Transient
+    private String accessDeniedError;
+
+
     // Text is a Postgres specific column type that allows you to save
     // text based data that will be longer than 256 characters
     // this is a base64 encoded version of the image
     @Column(columnDefinition = "TEXT")
     private String imageFile;
-
 
     @Column(name = "description")
     private String description;
@@ -69,7 +75,13 @@ public class Image {
         this.date = date;
     }
 
+    public void setaccessDeniedError(String accessDeniedError) {
+        this.accessDeniedError = accessDeniedError;
+    }
 
+    public String getAccessDeniedError() {
+        return accessDeniedError;
+    }
 
     public Integer getId() {
         return id;
